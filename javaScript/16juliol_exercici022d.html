@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #e26f41;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #000000;
+            background-color: #45b36f;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            align-content: center;
+            width: 170px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>16 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 22</h2>
+
+            <h3>¡Mayúscula y Minúscula!</h3>
+            <h4>¡escribe de todos modos!</h4>
+
+            <p>
+                <input type="text" id="palabra" placeholder="letras mayúscula y minúscula">
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="maymin()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const PALABRA = document.querySelector('input#palabra');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function maymin() {
+            const palabra = PALABRA.value;
+            if (palabra.length == 0) {
+                alert("Inserta cualquier cosa!");
+            } else {
+                let alfabeto = "aáãàâäbcçdeéêèėëfghiíîìïījklmnñoóõôòºōpqrstuúüùûūvwxyz";
+                let MAYUSCULA = "", MINUSCULA = "", CARACTER = "";
+                
+                let i=0;
+                while (i<palabra.length) {
+                    const X = palabra.charAt(i);
+                    if (X != " ") {
+                        if (alfabeto.includes(X) && MINUSCULA.indexOf(X) == -1) {
+                            (MINUSCULA == "") ? (MINUSCULA += X) : (MINUSCULA += ", " + X);
+                        } else
+                        if (alfabeto.toLocaleUpperCase().includes(X) &&  MAYUSCULA.indexOf(X) == -1) {
+                            (MAYUSCULA == "") ? MAYUSCULA += X : MAYUSCULA += ", " + X;
+                        } else
+                        if (!alfabeto.includes(X.toLowerCase()) && CARACTER.indexOf(X) == -1) {
+                            (CARACTER == "") ? CARACTER += X : CARACTER += ", " + X;
+                        }
+                    }
+                    i++;
+                }
+
+                let msg = `<h3>¡ ${palabra} !</h3>`;
+                if (MAYUSCULA.length > 0) {
+                    msg += `<h4/>Mayúsculas:</h4>`;
+                    msg += `<p/>${MAYUSCULA}</p>`;
+                }
+                if (MINUSCULA != "") {
+                    msg += `<h4/>Minúsculas:</h4>`;
+                    msg += `<p/>${MINUSCULA}</p>`;
+                }
+                if (CARACTER != "") {
+                    msg += `<h5/>Números u Caracteres:</h5>`;
+                    msg += `<p/>${CARACTER}</p>`;
+                }
+                
+                
+                OUTPUT.innerHTML = msg;
+                
+            }
+
+            PALABRA.value = "";
+            PALABRA.focus();
+        }
+
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

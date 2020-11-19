@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09 de juliol</title>
+    <style>
+        body {
+            background-color: rgb(28, 138, 138);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(248, 159, 159);
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(248, 159, 159);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: rgb(248, 159, 159);
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>09 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2>CALCULADORA<br>arcaica</h2>
+            <p>
+                ingrese dos números y elija<br>
+                el operador matemático<br>
+                <input type="number" name="" id="number1" placeholder="primer"> <br>
+                <select name="" id="operador">
+                    <option value=""></option>
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="x">x</option>
+                    <option value="/">/</option>
+                    <option value="%">%</option>
+                </select><br>
+                <input type="number" name="" id="number2" placeholder="segundo"> <br>
+            </p>
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="calcular()">
+            </p>
+        </div>
+
+        <div id="outputs"></div>
+    </section>
+
+        <script>
+            function calcular() {
+                let number1 = Number(document.querySelector('input#number1').value);
+                let number2 = Number(document.querySelector('input#number2').value);
+                let operador = document.querySelector('select#operador').value;
+                let output = document.querySelector('div#outputs');
+                output.innerHTML = "<strong>RESULTAT:</strong><br>"
+                if (number1 == 0) {
+                    output.innerHTML += "EL PRIMER NÚMERO FALTA"
+                } else if (number2 == 0) {
+                    output.innerHTML += "EL SEGUNDO NÚMERO FALTA"
+                } else {
+                    switch (operador) {
+                        case "+":
+                            output.innerHTML += sumar(number1, number2);
+                            break;
+                    
+                        case "-":
+                            output.innerHTML += sustraer(number1, number2);
+                            break;
+                        
+                        case "x":
+                            output.innerHTML += multiplicar(number1, number2);
+                            break;
+                    
+                        case "/":
+                            output.innerHTML += division(number1, number2);
+                            break;
+                        
+                        case "%":
+                            output.innerHTML += modulo(number1, number2);
+                            break;
+
+                        default:
+                            output.innerHTML += "l'operador no és vàlid"
+                            break;
+                    }
+                    document.querySelector('input#number1').value = "";
+                    document.querySelector('input#number2').value = "";
+                    document.querySelector('select#operador').value = "";
+                }
+
+                function sumar(value1, value2) {
+                    let result = value1 + value2;
+                    return `${value1} + ${value2} = ${result}`;
+                }
+
+                function sustraer(value1, value2) {
+                    let result = value1 - value2;
+                    return `${value1} - ${value2} = ${result}`;
+                }
+
+                function division(value1, value2) {
+                    let result = value1 / value2;
+                    return `${value1} / ${value2} = ${result}`;
+                }
+
+                function multiplicar(value1, value2) {
+                    let result = value1 * value2;
+                    return `${value1} x ${value2} = ${result}`;
+                }
+
+                function modulo(value1, value2) {
+                    let result = value1 % value2;
+                    return `${value1} % ${value2} = ${result}`;
+                }
+ 
+            }
+        </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

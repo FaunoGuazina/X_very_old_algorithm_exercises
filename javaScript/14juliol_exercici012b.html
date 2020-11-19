@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #0f9ad1;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #8bcdd6;
+            background-color: #8a0e61;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        div.outputs {
+            color: whitesmoke;
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>14 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 12</h2>
+
+            <h3>¡Calcular les Mitges!</h3>
+            <h4>Notes de Tota la Classe!</h4>
+
+            <p>
+                quantes notes voleu inserir?<br>
+                <input type="number" name="notes" id="notes" placeholder="quantitat" min="1"> <br>
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Calcular" onclick="mitja()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const QTDNOTES = document.querySelector('input#notes');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function mitja() {
+            
+            let qtdNotes = parseInt(QTDNOTES.value);
+            let notaMax = 0, notaMin = 10;
+            const NOTES = [];
+            
+            if (isNaN(qtdNotes) || qtdNotes <= 1) {
+                alert("quantitat de notes no vàlides!!!");
+            }
+            else {
+
+                let mitja = new Number, suma = new Number;
+                let msg = `<h3>¡RESULTAT!</h3><p>`;
+                
+    
+                for (let n=1; n<=qtdNotes; n++) {
+
+                    let temp = new Number;
+
+                    do {
+
+                        temp += parseFloat(prompt(`Inseriu la ${n}ª nota:`).trim());
+                        
+                        if (isNaN(temp)) {temp = -1};
+
+                    } while (temp<0 || temp>10);
+                    
+                    if (temp > notaMax) {
+                        notaMax = temp;
+                    }
+                    if (temp < notaMin) {
+                        notaMin = temp;
+                    }
+                    
+                    NOTES.push(temp);
+                    suma += temp;
+
+                    msg += `${n}ª NOTA: ${temp.toFixed(2)}<br>`;
+                }
+
+                mitja = suma/qtdNotes;
+
+                msg += `----<br>MITJA: ${mitja.toFixed(2)}<br>----</p>`;
+                msg += `MÁXIMA: ${notaMax.toFixed(2)}<br>`;
+                msg += `MÍNIMA: ${notaMin.toFixed(2)}<br>----`;
+                
+                if (mitja < 5) {
+                    msg += "<p>La nota media de la clase es de suspenso. " +
+                        "Los alumnos deberían preguntar sus dudas y " +
+                        "trabajar más por su cuenta.</p>";
+                }
+                else if (mitja <= 7) {
+                    msg += "<p>La nota media de la clase es buena pero " +
+                        "los alumnos deberían mejorar el trabajo personal.</p>";
+                }
+                else {
+                    msg += "<p>Enhorabona!<br>La nota media de la clase se corresponde con el esfuerzo que habéis realizado!</p>";
+                }                
+
+                OUTPUT.innerHTML = msg;
+            }
+
+            QTDNOTES.value = "";
+            QTDNOTES.focus();
+        }
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

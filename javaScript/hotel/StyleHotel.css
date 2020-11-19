@@ -1,0 +1,47 @@
+body {
+    /* background-color: #8edeec; */
+    background-image: radial-gradient( rgb(43, 70, 156), rgb(110, 211, 214));
+    font: normal 12pt trebuchet;
+}
+
+header {
+    color: #323379;
+    text-align: center;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+    
+}
+
+section {
+    text-align: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #2890b9;
+    border-radius: 20px;
+    padding: 15px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+}
+
+footer {
+    color: #323379;
+    text-align: center;
+    font-style: italic;
+    padding: 15px;
+}
+
+input {
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+    width: 120px;
+}
+
+input.btn {
+    margin: 3px;
+    padding: 5px;
+    width: auto;
+    border-radius: 15px;
+    text-align: center;
+}

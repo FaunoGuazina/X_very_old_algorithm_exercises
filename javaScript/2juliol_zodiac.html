@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 de juliol</title>
+    <style>
+        body {
+            background-color: rgb(158, 175, 142);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(56, 75, 51);
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(159, 248, 241);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: rgb(95, 42, 42);
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        div.outputs {
+            text-align: center;
+            align-self: center;
+            
+            
+        }
+        img{
+            width: 300px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header><h1>02 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2>Signe del Zodíac</h2>
+            <p>
+                Introdueix dia i mes<br>
+                <input type="number" name="" id="dia" placeholder="dia" min="1" max="31"> <br>
+                <input type="number" name="" id="mes" placeholder="mes" min="1" max="12"> <br>
+                
+                
+            </p>
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="verificar()">
+                
+            </p>
+        </div>
+        <div class="outputs" id="outputs">
+
+        </div>
+
+        <script>
+            function verificar() {
+                let dia = Number(document.querySelector('input#dia').value);
+                let mes = Number(document.querySelector('input#mes').value);
+                let output = document.querySelector('div#outputs');
+                if (dia <= 0 || dia >= 32) {
+                    output.innerHTML = "hem d’informar un dia vàlid";
+                } 
+                else if (dia >= 30 && mes == 2 || dia == 31 && (mes == 4 || mes == 6 || mes == 9 || mes == 11)) {
+                    output.innerHTML = "aquest mes no té aquest dia";
+                }
+                else if (mes <= 0 || mes >= 13) {
+                    output.innerHTML = "queda per informar un mes vàlid";
+                } else {
+                    let sign = document.createElement("img");
+                    if (dia >= 21 && mes == 3 || dia <= 20 && mes == 4){
+                        output.innerHTML = "Àries - 21/03 a 20/04";
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562283-aries-zodiac-sign_85080.png";
+                    } else if (dia >= 21 && mes == 4 || dia <= 20 && mes == 5){
+                        output.innerHTML = "TOURO - 21/04 A 20/05";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562249-taurus-zodiac-sign_85084.png";
+                    } else if (dia >= 21 && mes == 5 || dia <= 20 && mes == 6){                        
+                        output.innerHTML = "Gèmini - 21/05 a 20/06";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562286-gemini-zodiac-sign_85087.png";                        
+                    } else if (dia >= 21 && mes == 6 || dia <= 21 && mes == 7){                        
+                        output.innerHTML = "Cranc - 21/06 a 21/07";                    
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562282-cancer-zodiac-sign_85083.png";                        
+                    } else if (dia >= 22 && mes == 7 || dia <= 22 && mes == 8){                       
+                        output.innerHTML = "Lleó - 22/07 a 22/08";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562255-leo-zodiac-sign_85078.png";                        
+                    } else if (dia >= 23 && mes == 8 || dia <= 22 && mes == 9){                        
+                        output.innerHTML = "Verge - 23/08 a 22/09";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562291-virgo-zodiac-sign_85079.png";                        
+                    } else if (dia >= 23 && mes == 9 || dia <= 22 && mes == 10){                        
+                        output.innerHTML = "Balança - 23/09 a 22/10";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562278-libra-zodiac-sign_85081.png";                        
+                    } else if (dia >= 23 && mes == 10 || dia <= 21 && mes == 11){                        
+                        output.innerHTML = "Escorpió - 23/10 a 21/11";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562287-scorpion-zodiac-sign_85085.png";                        
+                    } else if (dia >= 22 && mes == 11 || dia <= 21 && mes == 12){                        
+                        output.innerHTML = "Sagitari - 22/11 a 21/12";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562280-sagittarius-zodiac-sign_85088.png";            
+                    } else if (dia >= 22 && mes == 12 || dia <= 20 && mes == 1){                        
+                        output.innerHTML = "Capricorn - 22/12 a 20/01";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562291-capricon-zodiac-sign_85086.png";                        
+                    } else if (dia >= 21 && mes == 1 || dia <= 19 && mes == 2){                        
+                        output.innerHTML = "Aquari - 21/01 a 19/02";                        
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562285-aquarius-zodiac-sign_85082.png";                        
+                    } else if (dia >= 20 && mes == 2 || dia <= 20 && mes == 3){
+                        output.innerHTML = "Peixos - 20/02 a 20/03";                
+                        sign.src = "https://cdn.icon-icons.com/icons2/1278/PNG/512/1497562280-pisces-zodiac-sign_85089.png";                        
+                    }
+                    output.appendChild(sign); 
+                    document.querySelector('input#dia').value = "";
+                    document.querySelector('input#mes').value = ""
+                    document.querySelector('input#dia').focus();
+                }
+            }
+        </script>
+
+    </section>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

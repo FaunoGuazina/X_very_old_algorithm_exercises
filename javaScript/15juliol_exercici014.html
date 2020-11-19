@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #cf41e2;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #000000;
+            background-color: #1ba18b;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        /* div.outputs {
+            color: whitesmoke;
+        } */
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>15 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 14</h2>
+
+            <h3>¡Número Primo!</h3>
+            <h4>¡ingrese un número para averiguar si es primo!</h4>
+
+            <p>
+                <input type="number" name="number" id="number" placeholder="número" min="1"> <br>
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="verificar()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const NUMBER = document.querySelector('input#number');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function verificar() {
+            
+            let numero = parseInt(NUMBER.value);
+            
+            if (isNaN(numero) || numero < 1) {
+                alert("el número no es válido!!!");
+            }
+            else {
+                let msg = `<h3>¡RESULTAT!</h3>`;
+                
+                if (primo(numero)) {
+                    msg += `<h4>${numero} és primo!</h4>`;
+                } else {
+                    msg += `<h4>${numero} NO és primo!</h4>`;
+                }
+
+                OUTPUT.innerHTML = msg;
+            }
+
+            NUMBER.value = "";
+            NUMBER.focus();
+        }
+
+        function primo(numero) {
+            let verify = true;
+            if (numero<=1) {verify = false;}
+            else {
+                for (let i=2; i < numero; i++){
+                    if (numero % i == 0) {
+                        verify = false;
+                    }
+                }
+            }
+            return verify
+        }
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

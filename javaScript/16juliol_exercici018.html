@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #e26f41;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #000000;
+            background-color: #45b36f;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>16 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 18</h2>
+
+            <h3>¡Área del Polígono!</h3>
+            <h4>¿Cuál quieres?</h4>
+
+            <p>
+                <select name="poligono" id="poligono">
+                    <option value="0"></option>
+                    <option value="1">circulo</option>
+                    <option value="2">rectángulo</option>
+                    <option value="3">triángulo</option>
+                    <option value="4">cuadrado</option>
+                </select>
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Medidas" onclick="area()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const POLIGONO = document.querySelector('select#poligono');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function area() {
+            
+            let poligono = Number(POLIGONO.value);
+            let area = new Number;
+
+            switch (poligono) {
+                case 1:                    
+                    circulo();        
+                    break;
+
+                case 2:
+                    rectangulo()                    
+                    break;
+
+                case 3:
+                    triangulo()                    
+                    break;
+
+                case 4:
+                    cuadrado();
+                    break;
+
+                default:
+                    alert("¡Hay que elegir un polígono!");
+                    break;
+            }
+
+            POLIGONO.value = "";
+            POLIGONO.focus();
+
+            function print() {
+                let msg = `<h3>¡Área de ${poligono}!</h3>`;
+                msg += `<p>${area.toFixed(2)} cm²</p>`;
+                OUTPUT.innerHTML = msg;
+            }
+
+            function circulo(){
+                let raio;
+                do {
+                    raio = parseFloat(prompt("Informar el raio").trim());
+                } while (isNaN(raio));
+
+                area = raio*raio*Math.PI;
+                poligono = "Circulo";
+                print()
+            }
+
+            function rectangulo(){
+                let base, altura;
+                do {
+                    base = parseFloat(prompt("Informar la base").trim());
+                } while (isNaN(base));
+
+                do {
+                    altura = parseFloat(prompt("informar altura").trim());
+                } while (isNaN(altura));
+
+                area = base*altura;
+                poligono = "Rectángulo";
+                print();
+            }
+
+            function triangulo(){
+                let base, altura;
+                do {
+                    base = parseFloat(prompt("Informar la base").trim());
+                } while (isNaN(base));
+
+                do {
+                    altura = parseFloat(prompt("informar la altura").trim());
+                } while (isNaN(altura));
+
+                area = (base*altura)/2;
+                poligono = "Triángulo";
+                print();
+            }
+
+            function cuadrado(){
+                let base;
+                do {
+                    base = parseFloat(prompt("Informar la base").trim());
+                } while (isNaN(base));
+
+                area = base*base;
+                poligono = "Cuadrado";
+                print();
+            }
+        }
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

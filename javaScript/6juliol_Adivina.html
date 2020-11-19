@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 de juliol</title>
+    <style>
+        body {
+            background-color: rgb(249, 217, 255);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(56, 75, 51);
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(231, 168, 168);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>06 de juliol</h1></header>
+    <section>
+        
+        <div id="inputs">
+            <h2>Adivine el número escogido por el programa</h2>
+                <p>
+                    haz clic en el botón para probar<br>
+                </p>
+                <p>
+                    <input type="button" class="btn" value="adivinar" onclick="adivina()">    
+                </p>
+        </div>
+        <div id="outputs">
+
+        </div>
+
+        <script>                        
+            let output = document.querySelector('div#outputs');
+            let valor = Math.ceil((Math.random() * 10));
+            let intento = 0;
+            function adivina() {
+                do {
+                    numero = Number(prompt("Introduzca números del 1 al 10"));
+                    intento++;
+                    if (numero != valor) {alert(`¡ERROR! no es ${numero}`)}
+                } while (numero != valor);
+                output.innerHTML = `YEAP!!! fue el ${valor}<br>después de ${intento} intentos`
+
+            }
+        </script>
+
+    </section>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

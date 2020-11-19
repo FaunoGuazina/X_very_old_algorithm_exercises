@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 de juliol - BECA</title>
+    <style>
+        body {
+            background-color: rgb(213, 220, 248);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(56, 75, 51);
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(160, 152, 228);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+        input.number {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 50px;
+            font-size: large;
+        }
+
+        input.edad {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>07 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2><input type="number" class="number" id="number" min="0" max="99">  BECAS</h2>
+            <p>
+                Nombre Completo<br>
+                <input type="text" id="nombre"><br>
+                <br>Edad<br>
+                <select name="edad" id="edad">
+                    <option value=""></option>
+                </select> <br>
+                <br>Título Universitario<br>
+                <select name="titulo" id="titulo">
+                    <option value=""></option>
+                    <option value="titulado">si</option>
+                    <option value="inexperto">no</option>
+                </select> <br>
+                <br>Situacion Laboral<br>
+                <select name="labor" id="labor">
+                    <option value=""></option>
+                    <option value="trabaja">trabaja</option>
+                    <option value="paro">paro</option>
+                </select> <br>
+            </p>
+            <p>
+                <input type="button" class="btn" value="Matricular" onclick="matricular()">
+                <input type="button" class="btn" value="Consultar" onclick="consultar()">
+            </p>
+        </div>
+        <div id="outputsNO"></div>
+        <div id="outputsSI"></div>
+        <script>
+            const BECAS = document.querySelector('input#number');
+            const NOMBRE = document.querySelector('input#nombre');
+            const EDAD = document.querySelector('select#edad');
+            for (let c = 1; c<=115; c++) {
+                let itemOpt = document.createElement('option')
+                itemOpt.text = c
+                itemOpt.value = c
+                EDAD.appendChild(itemOpt)
+            };
+            const TITULO = document.querySelector('select#titulo');
+            const LABOR = document.querySelector('select#labor');
+            const OUTPUTNO = document.querySelector('div#outputsNO');
+            const OUTPUTSI = document.querySelector('div#outputsSI');
+            const matriculas = [];
+            let qtdBECAS = 0;
+
+            function matricular() {
+                let nombre = NOMBRE.value.trim();
+                let edad = Number(EDAD.value);
+                let titulo = TITULO.value;
+                let labor = LABOR.value;
+                let beca = new Boolean;
+                if (((edad >= 18 && titulo == "titulado") || labor == "paro") && qtdBECAS <= BECAS.value) {
+                    beca = true;
+                    qtdBECAS++;
+                    alert(`¡Estudiante matriculado con éxito y Beca nº${qtdBECAS}!`);
+                    if (qtdBECAS == BECAS.value) {alert(`¡esta fue la última beca otorgada!`);}
+                } 
+                else {
+                    beca = false;
+                    alert("¡Estudiante matriculado con éxito!");
+                };
+                const alumno = [nombre, edad, titulo, labor, beca];
+                matriculas.push(alumno)
+                NOMBRE.value = "";
+                EDAD.value = "";
+                TITULO.value = "";
+                LABOR.value = "";
+                NOMBRE.focus();
+            }
+
+            function consultar() {
+                if (matriculas.length == 0) {
+                    alert("no hay estudiantes matriculados");
+                    OUTPUTNO.innerHTML = "";
+                    OUTPUTSI.innerHTML = "";
+                } else {
+                    OUTPUTNO.innerHTML = "<h3>Estudiantes Regulares Matriculados</h3>";
+                    OUTPUTSI.innerHTML = "<h3>Estudiantes Becarios Matriculados</h3>";
+                    for (let x=0;x<matriculas.length;x++) {
+                        if (matriculas[x][4] == false) {
+                            OUTPUTNO.innerHTML += matriculas[x][0]+"<br";
+                        } else {
+                            OUTPUTSI.innerHTML += matriculas[x][0]+"<br";
+                        }
+                    }   
+                }
+            }
+        </script>
+
+    </section>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

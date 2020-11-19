@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 de juliol - BECA</title>
+    <style>
+        body {
+            background-color: rgb(255, 110, 110);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(56, 75, 51);
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(207, 183, 73);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input.edad {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: rgb(95, 42, 42);
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>01 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2>MESOS</h2>
+            <p>
+                Quin mes voleu consultar?<br>
+                <select name="mes" id="mes">
+                    <option></option>
+                </select> <br>
+                
+            </p>
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="verificar()">
+                
+            </p>
+        </div>
+        <div id="outputs">
+
+        </div>
+
+        <script>
+            let MES = document.querySelector('select#mes');
+            for (let c = 1; c<=12; c++) {
+                let itemOpt = document.createElement('option');
+                itemOpt.text = c;
+                itemOpt.value = c;
+                MES.appendChild(itemOpt);
+            };
+            let output = document.querySelector('div#outputs');
+
+            function verificar() {
+                let mes = Number(MES.value);
+
+                if (mes == 1) {
+                        output.innerHTML = "El mes de gener té 31 dies";
+                }
+                else if (mes == 2) {
+                        output.innerHTML = "El mes de febrer té 28 o 29 dies";
+                }
+
+                else if (mes == 3) {
+                        output.innerHTML = "El mes de març té 31 dies";
+                }
+                        
+                else if (mes == 4) {
+                        output.innerHTML = "El mes de abril té 30 dies";
+                }
+                    
+                else if (mes == 5) {
+                        output.innerHTML = "El mes de maig té 31 dies";
+                }
+                        
+                else if (mes == 6) {
+                        output.innerHTML = "El mes de juny té 30 dies";
+                }
+                    
+                else if (mes == 7) {
+                        output.innerHTML = "El mes de juliol té 31 dies";
+                }
+                        
+                else if (mes == 8) {
+                        output.innerHTML = "El mes de agost té 31 dies";
+                }
+                        
+                else if (mes == 9) {
+                        output.innerHTML = "El mes de setembre té 30 dies";
+                }
+                    
+                else if (mes == 10) {
+                        output.innerHTML = "El mes de octubre té 31 dies";
+                }
+                        
+                else if (mes == 11) {
+                        output.innerHTML = "El mes de novembre té 30 dies";
+                }
+                    
+                else if (mes == 12) {
+                        output.innerHTML = "El mes de desembre té 31 dies";
+                }
+                    
+                else {
+                        output.innerHTML = "heu de seleccionar un mes";  
+                    
+                }
+
+            }
+        </script>
+
+    </section>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

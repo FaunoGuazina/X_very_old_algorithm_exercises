@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #e26f41;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #000000;
+            background-color: #45b36f;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            align-content: center;
+            width: 150px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>16 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 20</h2>
+
+            <h3>¡Números Ordenados!</h3>
+            <h4>¡inserta varios números!</h4>
+            <p>
+                <input type="button" class="btn" value="Ordenar" onclick="ordenar()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function ordenar() {
+            let lista = [];
+            let quest = true;
+
+            while (quest) {
+                let temp;
+                do {
+                    temp = parseFloat(prompt("Ingrese un numero").trim());
+                } while (isNaN(temp));
+                lista.push(temp);
+                quest = confirm("¿Desea continuar?");
+            }
+            let i = 0;
+            while (i<lista.length) {
+                let x, y;
+                for (let j=0; j<lista.length; j++) {
+                    x = lista[i];
+                    y = lista[j];
+                    if (x<y) {
+                        lista[i] = y
+                        lista[j] = x
+                    }
+                }
+                i++
+            }
+
+            let msg = `<h3>¡ORDENADOS!</h3>`;
+                msg += `<p>${lista}</p>`;
+
+            OUTPUT.innerHTML = msg;
+            
+        }
+
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

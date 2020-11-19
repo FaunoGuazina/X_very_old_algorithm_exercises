@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 de juliol - BECA</title>
+    <style>
+        body {
+            background-color: rgb(213, 246, 248);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(56, 75, 51);
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(168, 231, 184);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input.edad {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>01 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2>BECA</h2>
+            <p>
+                Edad<br>
+                <select name="edad" id="edad">
+                    <option value=""></option>
+                </select> <br>
+                <br>Título Universitario<br>
+                <select name="titulo" id="titulo">
+                    <option value=""></option>
+                    <option value="si">si</option>
+                    <option value="no">no</option>
+                </select> <br>
+                <br>Situacion Laboral<br>
+                <select name="labor" id="labor">
+                    <option value=""></option>
+                    <option value="trabajo">trabajo</option>
+                    <option value="paro">paro</option>
+                </select> <br>
+            </p>
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="verificar()">
+                
+            </p>
+        </div>
+        <div id="outputs">
+
+        </div>
+
+        <script>
+            let EDAD = document.querySelector('select#edad');
+            for (let c = 1; c<=115; c++) {
+                let itemOpt = document.createElement('option')
+                itemOpt.text = c
+                itemOpt.value = c
+                EDAD.appendChild(itemOpt)
+            };
+            let TITULO = document.querySelector('select#titulo');
+            let LABOR = document.querySelector('select#labor');
+            let output = document.querySelector('div#outputs');
+
+            function verificar() {
+                let edad = Number(EDAD.value.trim());
+                let titulo = TITULO.value;
+                let labor = LABOR.value;
+
+                if ((edad >= 18 && titulo == "si") || labor == "paro") {
+                    output.innerHTML = "<h1>si, tu beca ha sido autorizada</h1>";
+                } 
+                else {
+                    output.innerHTML = "<h1>lo sentimos mucho, no podemos darte una beca</h1>";
+                };
+
+            }
+        </script>
+
+    </section>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

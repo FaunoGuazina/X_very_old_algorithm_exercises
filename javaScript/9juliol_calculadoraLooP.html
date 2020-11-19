@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09 de juliol</title>
+    <style>
+        body {
+            background-color: rgb(28, 138, 138);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(248, 159, 159);
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(248, 159, 159);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: rgb(248, 159, 159);
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>09 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2>CALCULADORA<br>arcaica</h2>
+            <h3>in looping</h3>
+            <p>
+                <input type="button" class="btn" value="comienza" onclick="calcular()">
+            </p>
+        </div>
+    </section>
+
+        <script>
+            function calcular() {
+                let number1, number2, contador = 0, operador, quest = true;
+                let operadores = ["+", "-", "x", "X", "/", "%"]
+
+                while (quest) {
+
+                    do {
+                        number1 = Number(prompt("inserta el primer número").trim());
+                        if (number1 == 0) {alert("el primer número no puede ser 0!")}
+                    } while (isNaN(number1) || number1 == "")
+
+                    do {
+                        number2 = Number(prompt("inserta el segundo número").trim());
+                        if (number2 == 0) {alert("el segundo número no puede ser 0!")}
+                    } while (isNaN(number2)  || number2 == "" || number2 == 0)
+
+                    do {
+                        operador = prompt("inserta el operador:\n"+
+                                            "+ para somar\n"+
+                                            "- para sustraer\n"+
+                                            "/ para dividir\n"+
+                                            "x para multiplicar\n"+
+                                            "% para resto de la división");
+                        if (operador == "*") {operador = "x"};
+                    } while (!operadores.includes(operador))
+
+                    switch (operador.toLowerCase()) {
+                        case "+":
+                            alert(sumar(number1, number2));
+                            break;
+                    
+                        case "-":
+                            alert(sustraer(number1, number2));
+                            break;
+                        
+                        case "x":
+                            alert(multiplicar(number1, number2));
+                            break;
+                        
+                        case "/":
+                            alert(division(number1, number2));
+                            break;
+                        
+                        case "%":
+                            alert(modulo(number1, number2));
+                            break;
+
+                        default:
+                            alert("l'operador no és vàlid");
+                            break;
+                    }
+                    quest = confirm("¿Quieres seguir haciendo operaciones matemáticas?");
+                    contador++;
+                    if (!quest) {alert(`hiciste ${contador} operaciones`)}
+                }
+
+                function sumar(value1, value2) {
+                    let result = value1 + value2;
+                    return `${value1} + ${value2} = ${result}`;
+                }
+
+                function sustraer(value1, value2) {
+                    let result = value1 - value2;
+                    return `${value1} - ${value2} = ${result}`;
+                }
+
+                function division(value1, value2) {
+                    let result = value1 / value2;
+                    return `${value1} / ${value2} = ${result}`;
+                }
+
+                function multiplicar(value1, value2) {
+                    let result = value1 * value2;
+                    return `${value1} x ${value2} = ${result}`;
+                }
+
+                function modulo(value1, value2) {
+                    let result = value1 % value2;
+                    return `${value1} % ${value2} = ${result}`;
+                }
+ 
+            } // end calcular()
+        </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

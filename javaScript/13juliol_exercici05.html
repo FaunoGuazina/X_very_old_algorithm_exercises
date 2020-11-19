@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: rgb(61, 28, 138);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(248, 159, 159);
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(248, 232, 159);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: rgb(248, 159, 159);
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>13 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2>EXERCICI 05</h2>
+            <h4>Ingrese 2 Números</h4>
+            <h6>¿alguno es negativo?</h6>
+            <p>
+                <input type="number" name="" id="number1" placeholder="primer"> <br>
+                <input type="number" name="" id="number2" placeholder="segundo"> <br>
+            </p>
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="verificar()">
+            </p>
+        </div><div id="outputs"></div>
+    </section>
+
+        <script>
+            const NUMBER1 = document.querySelector('input#number1');
+            const NUMBER2 = document.querySelector('input#number2');
+            const OUTPUT = document.querySelector('div#outputs');
+
+            function verificar() {
+                let number1 = Number(NUMBER1.value);
+                let number2 = Number(NUMBER2.value);
+                if (number1 < 0 && number2 > 0) {
+                    alert("el primer número es negativo");;
+                } else if (number2 < 0 && number1 > 0) {
+                    alert("el segundo número es negativo");
+                } else if (number1 < 0 && number2 < 0) {
+                    alert("ambos números son negativo")
+                } else if (number1 == 0 || number2 == 0) {
+                    alert("ningún número puede ser nulo");
+                } else {
+                    alert("ambos números son positivos")
+                }
+                
+                NUMBER1.value = "";
+                NUMBER1.focus();
+                NUMBER2.value = "";
+            }
+        </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

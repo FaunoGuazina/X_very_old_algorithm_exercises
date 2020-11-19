@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: rgb(61, 28, 138);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(248, 159, 159);
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(248, 232, 159);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: rgb(248, 159, 159);
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>13 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2>EXERCICI 06</h2>
+            <h4>Els nombres parells entre dos valors</h4>
+            <p>
+                <input type="number" name="" id="number1" placeholder="primer"> <br>
+                <input type="number" name="" id="number2" placeholder="segon"> <br>
+            </p>
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="verificar()">
+            </p>
+        </div><div id="outputs"></div>
+    </section>
+
+        <script>
+
+            // declaración de constantes de manipulación html
+            const NUMBER1 = document.querySelector('input#number1');
+            const NUMBER2 = document.querySelector('input#number2');
+            const OUTPUT = document.querySelector('div#outputs');
+
+            // inicio de la función
+            function verificar() {
+
+                // declaración de variables que capturan valores
+                let number1 = Number(NUMBER1.value);
+                let number2 = Number(NUMBER2.value);
+                
+                // condicional de qué número es mayor o si son iguales
+                if (number1 > number2) {
+                    OUTPUT.innerHTML = `<h4>comptant de ${number1} a ${number2}</h4>`;
+                    contadorD(number1, number2);
+
+                } else if (number1 < number2) {
+                    OUTPUT.innerHTML = `<h4>comptant de ${number1} a ${number2}</h4>`;
+                    contadorC(number1, number2);
+
+                } else {
+                    OUTPUT.innerHTML = "";
+                    alert("els números són els mateixos");
+                }
+                
+                NUMBER1.value = "";
+                NUMBER1.focus();
+                NUMBER2.value = "";
+            }
+
+            function contadorD(N1, N2){
+                for (let x=N1; x>=N2; x--) {
+                    if (x%2==0) {
+                        OUTPUT.innerHTML += `${x}`;
+                        if (x==N2) { 
+                            OUTPUT.innerHTML += "!";    
+                        }
+                    } else if (x==N2) { 
+                        OUTPUT.innerHTML += "!";
+                    } else {
+                        if (x!=N1) {
+                            OUTPUT.innerHTML += `, `;
+                        }                            
+                    }
+                }
+            }
+            function contadorC(N1, N2){
+                for (let x=N1; x<=N2; x++) {
+                    if (x%2==0) {
+                        OUTPUT.innerHTML += `${x}`;
+                        if (x==N2) { 
+                            OUTPUT.innerHTML += "!";    
+                        }
+                    } else if (x==N2) { 
+                        OUTPUT.innerHTML += "!";
+                    } else {
+                        if (x!=N1) {
+                            OUTPUT.innerHTML += `, `;
+                        }                            
+                    }
+                }
+            }
+        </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

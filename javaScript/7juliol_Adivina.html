@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 de juliol</title>
+    <style>
+        body {
+            background-color: rgb(205, 227, 255);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(56, 75, 51);
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(169, 168, 231);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>06 de juliol</h1></header>
+    <section>
+        
+        <div id="inputs">
+            <h2>Adivine el número escogido por el programa</h2>
+                <p>
+                    haz clic en el botón para probar tus 3 intentos<br>
+                </p>
+                <p>
+                    <input type="button" class="btn" value="adivinar" onclick="adivina()">    
+                </p>
+        </div>
+        <div id="outputs">
+
+        </div>
+
+        <script>                        
+            let valor, numero, intento;
+            function adivina() {
+                numero = 0;
+                intento = 0;
+                valor = Math.ceil((Math.random() * 10));
+                while (intento < 3 && numero != valor) {
+                    numero = Number(prompt("Introduzca números del 1 al 10"));
+                    intento++;
+                    if (numero != valor) {alert(`¡ERROR! no es el ${numero}`)};
+                }
+                if (numero == valor) {
+                    alert(`YEAP!!! fue el ${valor}, después de ${intento} intentos`);
+                } else {
+                    alert(`NOPE!!! era el ${valor}, intentaste las ${intento} veces posibles`);
+                }
+            }
+        </script>
+
+    </section>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

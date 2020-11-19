@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #0fd1b1;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #a9f3fd;
+            background-color: #a61eb8;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        div.outputs {
+            color: whitesmoke;
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>15 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 13</h2>
+
+            <h3>¡FACTORIAL!</h3>
+            <h4>¡ingrese un número para conocer su factorial!</h4>
+
+            <p>
+                <input type="number" name="number" id="number" placeholder="número" min="1"> <br>
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Factorial" onclick="factor()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const FACTOR = document.querySelector('input#number');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function factor() {
+            
+            let factor = parseInt(FACTOR.value);
+            
+            if (isNaN(factor) || factor < 1) {
+                alert("el número no es válido!!!");
+            }
+            else {
+                let msg = `<h3>¡RESULTAT!</h3>`;
+                    msg += `<h4>${factor}!</h4>`;
+                    msg += `<p>-------<br>${factor}`;
+                
+                let resultado = fact(factor);
+                
+                while (factor > 1) {
+                    factor--;
+                    msg += ` x ${factor}`;
+                }
+                msg += `<br>-------</p><h4>${resultado}</h4>`;
+                OUTPUT.innerHTML = msg;
+            }
+
+            FACTOR.value = "";
+            FACTOR.focus();
+        }
+
+        function fact(num) {
+            let factorial;
+            if (num < 0) 
+                factorial = -1;
+            else if (num == 0) 
+                factorial = 1;
+            else {
+                factorial = (num * fact(num - 1));
+            }
+            return factorial;
+        }
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #e26f41;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #000000;
+            background-color: #45b36f;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>16 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 17</h2>
+
+            <h3>¡FIBONACCI!</h3>
+            <h4>¿Cuántos números en la secuencia quieres?</h4>
+
+            <p>
+                <input type="number" name="number" id="number" placeholder="valor"> <br>
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Fibonacci" onclick="fibonacci()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const NUMBER = document.querySelector('input#number');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function fibonacci() {
+            
+            let numero = parseInt(NUMBER.value);
+            
+            if (isNaN(numero) || numero <= 0) {
+                alert("el valor no es válido!!!");
+            }
+            else {
+
+                let msg = `<h3>¡SECUENCIA DE ${numero}!</h3>`;
+
+                msg += `<p>0, 1, `;
+
+                let x = 1;
+                let x1 = 0;
+                let x2 = 0;
+
+                for (let i=1; i<numero; i++) {
+                    x2 = x1;
+                    x1 = x;
+                    x = (x1 + x2);
+                    msg += x;
+                    if (i!=numero-1) {msg += ", ";}
+                }
+
+                msg += `...</p>`;
+            
+                OUTPUT.innerHTML = msg;
+            }
+
+            NUMBER.value = "";
+            NUMBER.focus();
+        }
+
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

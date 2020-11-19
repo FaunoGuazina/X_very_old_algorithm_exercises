@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #0f9ad1;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #8bcdd6;
+            background-color: #8a0e61;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        div.outputs {
+            color: whitesmoke;
+        }
+        
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>14 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 11</h2>
+
+            <h3>¡Calculi la Mitja!</h3>
+
+            <p>
+                <input type="number" name="nota 1" id="nota1" placeholder="nota 1" min="0" max="10"> <br>
+                <input type="number" name="nota 2" id="nota2" placeholder="nota 2" min="0" max="10"> <br>
+                <input type="number" name="nota 3" id="nota3" placeholder="nota 3" min="0" max="10"> <br>
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Calcular" onclick="calcular()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const NOTA1 = document.querySelector('input#nota1');
+        const NOTA2 = document.querySelector('input#nota2');
+        const NOTA3 = document.querySelector('input#nota3');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function calcular() {
+
+            let nota1 = parseFloat(NOTA1.value);
+            let nota2 = parseFloat(NOTA2.value);
+            let nota3 = parseFloat(NOTA3.value);
+            
+            
+            if (nota1 < 0 || nota1 > 10 || nota2 < 0 || nota2 > 10 ||
+                nota3 < 0 || nota3 > 10 || isNaN(nota1+nota2+nota3)) { 
+                alert("notes no vàlides!!!");
+            }
+            else {
+                
+                let mitja = (nota1+nota2+nota3)/3;
+                let msg = new String;
+
+                msg = `<h3>¡RESULTAT!</h3>`;
+                msg += `<p>1ª NOTA: ${nota1}<br>2ª NOTA: ${nota2}<br>3ª NOTA: ${nota3}<br>----<br>MITJA: ${mitja}</p>`;
+
+                if (mitja < 5) {
+                    msg += "<p>No has superat el curs.<br>Has de recuperar.</p>";                    
+                }
+                else if (mitja <= 7) {
+                    msg += "<p>Enhorabona!<br>Has aprovat però hauries de seguir practicant.</p>";        
+                }
+                else {
+                    msg += "<p>Enhorabona!<br>Has superat el curs!<br>Passa ja al següent nivell!</p>";                    
+                }
+
+                OUTPUT.innerHTML = msg;
+            }
+            
+            NOTA1.value = "";
+            NOTA2.value = "";
+            NOTA3.value = "";
+            NOTA1.focus();
+        }
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

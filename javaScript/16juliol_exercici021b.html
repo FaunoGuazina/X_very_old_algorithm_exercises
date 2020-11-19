@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #e26f41;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #000000;
+            background-color: #45b36f;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            align-content: center;
+            width: 150px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>16 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 21</h2>
+
+            <h3>¡PALÍNDROMO!</h3>
+            <h4>¡inserta palabras para ver si es!</h4>
+
+            <p>
+                <input type="text" id="palabra" placeholder="palabras">
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="palindromo()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+
+        //declaración de constantes que capturan elementos HTML
+        const PALABRA = document.querySelector('input#palabra');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        // inicio de la función:
+        function palindromo() {
+
+            // variable que captura las letras ingresadas por el usuario
+            let palabra = PALABRA.value;
+
+            //condicional que verifica si el usuario ha ingresado algo y es texto
+            if (palabra.length == 0 || !isNaN(palabra)) {
+                alert("¡inserte cualquier cosa, siempre que sea texto!\n¡Sin números ni caracteres especiales!");
+
+            //si es texto, realice estas acciones
+            } else {
+
+                // condicionales: para texto limpio sin espacio y sin acento, y tamaño de cadena de texto
+                let palabraLimpia = "", T=palabra.length-1;
+
+                //constantes de cadena con caracteres acentuados y especiales
+                const acentos = "áãàâäåéêèęėēëíîìïįīóõôòöōúüùûūñç";
+                
+                // la barra diagonal antes de las comillas es identificarlas como texto
+                //así como la barra diagonal inversa y la barra misma
+                const caracteres = " ·.,!¡¿?;:`'\"(){}[]+=-_~|<>*&^%$#@\\\/";
+                
+
+                //FOR para llenar la variable con texto limpio, sin espacios ni acentos
+                for (i=0; i<=T; i++) {
+
+                    //variable que define el carácter en posición (i) y minúscula.
+                    let lletra = palabra.charAt(i).toLowerCase();
+
+                    //condicional que verifica si el personaje no es espacio o especial
+                    //método includes() que comprueba si un STRING contiene un carácter
+                    if (!caracteres.includes(lletra)) {
+
+                        //condicional que verifica si el personaje está acentuado
+                        if (acentos.includes(lletra)) {
+                            
+                            //secuencia de condicionales que comprueba cuál es la letra acentuada
+                            //y la convierte en una letra sin acento.
+                            if ("áãàâäå".includes(lletra)) {
+                                lletra = "a";
+
+                            } else if ("éêèęėēë".includes(lletra)) {
+                                lletra = "e";
+
+                            } else if ("íîìïįī".includes(lletra)) {
+                                lletra = "i";
+
+                            } else if ("óõôòöō".includes(lletra)) {
+                                lletra = "o";
+
+                            } else if ("úüùûū".includes(lletra)) {
+                                lletra = "u";
+
+                            } else if ("ñ".includes(lletra)) {
+                                lletra = "n";
+
+                            } else if ("ç".includes(lletra)) {
+                                lletra = "c";
+                            }
+                        }
+
+                        //después de todas las comprobaciones, agregue caracteres
+                        //a la variable que representa el texto claro
+                        palabraLimpia += lletra;
+                    }
+                }
+
+                //declaración de la variable al revés y vacía.
+                let palabraReves = "";
+
+                //FOR para llenar la variable al revés
+                for (i=T; i>=0; i--) {
+                    palabraReves += palabraLimpia.charAt(i);
+                }
+
+                //declaración de la variable que sumará el resultado completo
+                //impreso en la pantalla con etiquetas HTML
+                let msg = "<h3> ¡ViceVersa! </h3>";
+
+                // agregar otra línea con el texto ingresado por el usuario
+                msg += "<p>" + palabra + "</p>";
+
+                //condicional que verifica si el texto limpio y al revés son iguales
+                //agregando otra linia de texto con el resultado positivo
+                if (palabraLimpia == palabraReves) {
+                    msg += "<h4>SI, es un palíndromo</h4>";
+                
+                // o negativo
+                } else {
+                    msg += "<h4>NO, no es un palíndromo</h4>";
+                }
+                
+                //después de todo, cambie el html que muestra la variable con resultado
+                OUTPUT.innerHTML = msg;
+                
+            }
+
+            //método que borra el input del usuario
+            PALABRA.value = "";
+
+            //método que devuelve el cursor a el input
+            PALABRA.focus();
+        }
+
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

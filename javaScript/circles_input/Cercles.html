@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            
+            background-image: url(./circulos.jpg);
+            background-size: cover;
+            background-position: center;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #000000;
+            background-color: #ffffffbd;
+            border-radius: 20px;
+            padding: 15px;
+            width: 450px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            align-content: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        canvas {
+           background-color: rgb(245, 245, 245); 
+        }
+    </style>
+</head>
+<body>
+    <header><h1>28 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI CERCLES</h2>
+
+            <p>
+                1º CERCLE: 
+                <input type="text" id="r1" placeholder="radi" min="1" max="200">
+                <input type="text" id="x1" placeholder="posició X" min="0">
+                <input type="text" id="y1" placeholder="posició Y" min="0">
+                <br>
+                
+                2º CERCLE: 
+                <input type="text" id="r2" placeholder="radi" min="1" max="200">
+                <input type="text" id="x2" placeholder="posició X" min="0">
+                <input type="text" id="y2" placeholder="posició Y" min="0">
+
+                <br><br>
+                <input type="button" class="btn" value="dibuixar" onclick="begin()"> <br>
+            </p>
+
+            <p>
+                <canvas id="circles" width="400" height="400"></canvas>
+            </p>
+
+            
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <footer>BCN Activa - IT Academy</footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

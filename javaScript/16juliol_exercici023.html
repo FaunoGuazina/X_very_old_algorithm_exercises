@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #e26f41;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #000000;
+            background-color: #45b36f;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        footer {
+            color: #ffffff;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            align-content: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            width: auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>16 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 23</h2>
+
+            <h3>¡FIDEUÀ!</h3>
+            <h4>¡comida para amigos!</h4>
+
+            <p>
+                Fideos
+                <input type="number" id="fideua" placeholder="precio / kg" min="1"> <br>
+                Calamares
+                <input type="number" id="calamares" placeholder="precio / kg" min="1"> <br>
+                Gambas
+                <input type="number" id="gambas" placeholder="precio / kg" min="1"> <br>
+                Amigos
+                <input type="number" id="amigos" placeholder="cantidad" min="1"> <br>
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Verificar" onclick="cenar()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const FIDEOS = document.querySelector('input#fideua');
+        const CALAMARES = document.querySelector('input#calamares');
+        const GAMBAS = document.querySelector('input#gambas');
+        const AMIGOS = document.querySelector('input#amigos');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function cenar() {
+            
+            const PRECIOf = parseFloat(FIDEOS.value);
+            const PRECIOc = parseFloat(CALAMARES.value);
+            const PRECIOg = parseFloat(GAMBAS.value);
+            const CANTIDADa = parseInt(AMIGOS.value);
+            
+
+            if (isNaN(PRECIOf) || isNaN(PRECIOc) || isNaN(PRECIOg) 
+                || isNaN(CANTIDADa) || (PRECIOf*PRECIOc*PRECIOg*CANTIDADa)==0) {
+                alert("Faltan algunos datos!")
+            } 
+            else {
+                let cantidadF = 0.5*CANTIDADa/4;
+                let cantidadC = 0.4*CANTIDADa/4;
+                let cantidadG = 0.2*CANTIDADa/4;
+                let precioTotal = (PRECIOf*cantidadF)+(PRECIOc*cantidadC)+(PRECIOg*cantidadG);
+                let precioIndiv = precioTotal/CANTIDADa;
+
+
+                let msg = `<h3>¡ RECETA FIDEUÀ !</h3>`;
+                        msg += "<p>Cada cuatro personas deben utilizar medio kilo de fideos, 400 gramos de calamares y 200 gramos de gambas.</p>";
+                    msg += `<h4>¡ CANTIDADES PARA ${CANTIDADa} PERSONAS!</h4>`;
+                        msg += `<p>Fideuà: ${cantidadF.toFixed(3)} kg`;
+                        msg += `<br>Calamares: ${cantidadC.toFixed(3)} kg`;
+                        msg += `<br>Gambas: ${cantidadG.toFixed(3)} kg</p>`;
+                    msg += `<h4>¡ PRECIOS !</h4>`;
+                        msg += `<p>TOTAL: €${precioTotal.toFixed(2)}`;
+                        msg += `<br>INDIVIDUAL: €${precioIndiv.toFixed(2)}</p>`;
+
+                OUTPUT.innerHTML = msg;
+            }
+
+            FIDEOS.value = "";
+            CALAMARES.value = "";
+            GAMBAS.value = "";
+            AMIGOS.value = "";
+            FIDEUA.focus();
+        }
+
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 de juliol</title>
+    <style>
+        body {
+            background-color: rgb(158, 175, 142);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(56, 75, 51);
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(159, 248, 241);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: rgb(95, 42, 42);
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        div.outputs {
+            text-align: center;
+            align-self: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <header><h1>02 de juliol</h1></header>
+    <section>
+        <div id="imputs">
+            <h2>PARAULES</h2>
+            <p>
+                Introdueix la quantitat de<br> paraules que voleu desar<br>
+                <input type="text" name="" id="quantes" placeholder="quantes" min="0"> <br>
+                
+                
+            </p>
+            <p>
+                <input type="button" class="btn" value="Desar" onclick="desar()">
+                
+            </p>
+        </div>
+        <div class="outputs" id="outputs">
+
+        </div>
+
+        <script>
+            let txtquantes = document.querySelector('input#quantes');
+            let output = document.querySelector('div#outputs');
+            
+            function desar() { 
+                let quantes = Number(txtquantes.value.trim());
+                if (quantes >=1) {
+                    let diccionari = new Array;
+                    const lletres = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ·'\s]+$/;
+                    for (let vegades=0; vegades<quantes; vegades++) {
+                        let paraula = prompt(`Introdueix la ${vegades+1}ª paraula`).trim();
+                        while (!lletres.test(paraula)) {
+                            alert("no és una paraula");
+                            paraula = prompt(`Introdueix la ${vegades+1}ª paraula`).trim();
+                        }
+                        paraula = paraula.charAt(0).toUpperCase() + paraula.slice(1).toLowerCase();
+                        diccionari[vegades] = paraula;
+                    } 
+                    if (diccionari.length == 1) {
+                        output.innerHTML = "PARAULA INTRODUÏDA<BR>";
+                        output.innerHTML += diccionari[0];                       
+                    } else {
+                        diccionari.sort();
+                        output.innerHTML = `${diccionari.length} PARAULES INTRODUÏDES<BR>(ordenats alfabèticament)<br>`;
+                        for (let position = 0; position<diccionari.length; position++) {
+                            output.innerHTML += `${diccionari[position]}<br>`;
+                        }
+                    }
+                } else {
+                    output.innerHTML = "no heu introduït un valor adequat";
+                }
+                
+                txtquantes.value = ""
+                txtquantes.focus();
+            }
+
+        </script>
+
+    </section>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 de juliol</title>
+    <style>
+        body {
+            background-color: rgb(249, 217, 255);
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: rgb(56, 75, 51);
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+            background-color: rgb(231, 168, 168);
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        input.edad {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>06 de juliol</h1></header>
+    <section>
+        
+        <div id="inputs">
+            <h2>Academia de Idiomas</h2>
+                <p>
+                    Numero de Alumnos<br><br>
+                    <input type="number" id="numero" min="1" max="100" placeholder="nº">
+                </p>
+                <p>
+                    <input type="button" class="btn" value="Cadastrar" onclick="cadastrar()">    
+                </p>
+        </div>
+        <div id="outputs">
+
+        </div>
+
+        <script>
+            
+            let inputs = document.querySelector('div#inputs');
+            let output = document.querySelector('div#outputs');
+            let numero = document.querySelector('input#numero');
+            let becas = [];
+            let matricula = [];
+            
+            function cadastrar() {
+                let N = Number(numero.value);
+                const lletres = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ·'\s]+$/;
+                const numbers = /^[0-9]/
+                const siYno = /^[sSnn\s]+$/
+                for (let x=0; x<N; x++) {            
+                    let nombre, titulo, paro, edad;
+                    do {
+                        nombre = prompt(`Nombre ${x+1}:`).trim();
+                    } while (!lletres.test(nombre));
+                    
+                    do {
+                        edad = Number(prompt("Edad:").trim());
+                    } while (!numbers.test(edad) || edad == "");
+
+                    while (!siYno.test(titulo)) {
+                        titulo = prompt("Possui Título Universitário: (s/n)").trim().toLowerCase()
+                    } 
+                    
+                    while (!siYno.test(paro)) {
+                        paro = prompt("Esta em el paro: (s/n)").trim().toLowerCase()
+                    } 
+
+                    alumno = new Map;
+                    alumno.set("Nombre", nombre)
+                    alumno.set("Edad", edad)
+                    alumno.set("Titulo", titulo)
+                    alumno.set("Paro", paro)
+
+                    matricula.push(alumno)
+
+                    if ((edad >= 18 && titulo == "s") || paro == "s") {
+                        becas.push(alumno)
+                    }              
+                }
+                //outputs
+                output.innerHTML = "<h3>Estudiantes con becas:</h3><p>"
+                for (let x=0; x<becas.length;x++) {
+                    output.innerHTML += becas[x].get("Nombre")+"<br>"
+                }
+                output.innerHTML += "</p>"
+            }
+        </script>
+
+    </section>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

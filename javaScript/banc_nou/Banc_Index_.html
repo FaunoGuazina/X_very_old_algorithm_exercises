@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <link rel="stylesheet" href="Banc_Style_.css">
+</head>
+<body>
+    <header><h1>23 de juliol</h1></header>
+
+    <section>
+
+        <div>
+
+            <h2>EXERCICI 26</h2>
+
+            <h3>¡FG BANC!</h3>
+
+            <p>
+                Gestió de Clients
+                <br><br>
+                <input type="button" class="btn" id="alta" value=" Informació " onclick="infoClients()">
+                <br>
+                <input type="button" class="btn" id="alta" value=" Alta " onclick="altaClient()">
+                <input type="button" class="btn" id="alta" value=" Canvi " onclick="canviClient()">
+                <input type="button" class="btn" id="baixa" value=" Baixa " onclick="baixaClient()">
+                <br><br>
+            </p>
+            <p>
+                Gestió de Comptes
+                <br><br>
+                <input type="button" class="btn" id="informació" value=" Informació " onclick="informacio()">
+                <input type="button" class="btn" id="extracte" value=" Extracte " onclick="extracte()">
+                <br>
+                <input type="button" class="btn" id="ingressar" value=" Ingressar " onclick="ingressar()">
+                <input type="button" class="btn" id="saldo" value=" Saldo " onclick="saldo()">
+                <input type="button" class="btn" id="retirar" value=" Retirar " onclick="retirar()">
+                <br>
+                <input type="button" class="btn" id="alta" value=" Nou Compte " onclick="nouCompte()">
+                <input type="button" class="btn" id="baixa" value=" Tancar Compte " onclick="tancarCompte()">
+            </p>
+
+            <div id="inputs"></div>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+    
+    
+    <script src="BancClasses_.js"></script>
+    <script src="BancFunctions_.js"></script>
+    <script src="Banc_Main_.js"></script>
+
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Curs 29/Juny</title>
+    <style>
+        body {
+            background-color: #D10F13;
+            font: normal 12pt trebuchet;
+        }
+
+        header {
+            color: #FF2B2F;
+            text-align: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            
+        }
+
+        section {
+            text-align: center;
+            color: #8BD6A0;
+            background-color: #0E8A30;
+            border-radius: 20px;
+            padding: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.356);
+        }
+
+        div.outputs {
+            color: #D10F13;
+        }
+
+        footer {
+            color: #FF2B2F;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+        }
+
+        input {
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70px;
+        }
+
+        input.btn {
+            margin: 3px;
+            padding: 5px;
+            
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>14 de juliol</h1></header>
+
+    <section>
+
+        <div id="imputs">
+
+            <h2>EXERCICI 09</h2>
+
+            <h4>¡Árbol de Navidad!</h4>
+            <h5>¡al contrario!</h5>
+
+            <p>
+                <input type="number" name="" id="number1" placeholder="ramas" min="1" max="25"> <br>
+            </p>
+
+            <p>
+                <input type="button" class="btn" value="Multiplicar" onclick="arbol_navidad()">
+            </p>
+
+        </div>
+
+        <div id="outputs" class="outputs"></div>
+
+    </section>
+
+    <script>
+        const NUMBER = document.querySelector('input#number1');
+        const OUTPUT = document.querySelector('div#outputs');
+
+        function arbol_navidad() {
+            
+            let ramas = Number(NUMBER.value);
+            let arbol = new String, ramita = new String, hoja = "* ";
+            
+            if (ramas > 25) {
+                alert("un árbol no soporta más de 25 ramas")
+            }
+            else if (ramas < 1) {
+                alert("menos que una rama? el árbol aún no ha brotado")
+            }
+            else {
+
+                arbol += `||| <br>`;
+                
+                for (let r=ramas; r>=1; r--) {
+                    for (let h=r; h>=1; h--) {
+                        ramita += hoja;
+                    }
+                    arbol += `${ramita}<br>`;
+                    ramita = new String;
+                }
+                
+                OUTPUT.innerHTML = `<h4>¡Árbol de ${ramas} ramas!<h4>`;
+                OUTPUT.innerHTML += arbol;
+            }
+
+            NUMBER.value = "";
+            NUMBER.focus();
+        }
+    </script>
+    <footer>BCN Activa - IT Academy</footer>
+</body>
+</html>
