@@ -1,0 +1,8 @@
+print('=ˆ= ' * 11)
+print('             CÁLCUL DE PINTURA')
+print('=ˆ= ' * 11)
+amplada = float(input('Introduïu l\'amplada de la paret: '))
+print('-.- ' * 11)
+alcada = float(input('Introduïu l\'alçada de la paret: '))
+print('!<>!' * 11)
+print('La vostra paret és {:.2f} m² i necessitareu\n{:.1f} litres de pintura per pintar-la'.format(amplada*alcada, (amplada*alcada)/2))

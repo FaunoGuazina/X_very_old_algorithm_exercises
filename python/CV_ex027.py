@@ -1,0 +1,8 @@
+print('=ˆ= ' * 11)
+print('        analitzador de noms')
+print('=ˆ= ' * 11)
+nom = str(input('com es diu? ')).strip().title()
+NOM = nom.split()
+print('molt de gust en conèixer-te')
+print('el seu primer nom és {}'.format(NOM[0]))
+print('el seu últim nom és {}'.format(NOM[-1]))

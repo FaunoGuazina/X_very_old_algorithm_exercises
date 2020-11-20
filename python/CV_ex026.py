@@ -1,0 +1,7 @@
+print('=ˆ= ' * 11)
+print('        analitzador de frases')
+print('=ˆ= ' * 11)
+frase = str(input('introduir una frase: ')).strip()
+print('la lletra A apareix {} vegades en aquesta frase'.format(frase.upper().count('A')))
+print('la lletra A apareix per primera vegada a la posició {}'.format(frase.upper().find('A')+1))
+print('la lletra A apareix última a la posició {}'.format(frase.lower().rfind('a')+1))

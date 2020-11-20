@@ -1,0 +1,8 @@
+print('=ˆ= ' * 11)
+print('        CÁLCUL DE LLOGUER')
+print('=ˆ= ' * 11)
+dies = float(input('Introduir al nombre de dies: '))
+km = float(input('Introduir al nombre de quilòmetres: '))
+segur = float(input('Introduir l\ímport de l\'assegurança: '))
+print('-.- ' * 11)
+print('Sabent que l’import diari és de 60,00€\ni que el quilòmetre costa 0,15€\nmés l’import de l’assegurança {:.2f}€,\nl’import a pagar és de {:.2f}€'.format(segur, dies*60+km*0.15+segur))

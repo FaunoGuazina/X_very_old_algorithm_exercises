@@ -1,0 +1,8 @@
+print('=ˆ= ' * 11)
+print('           AJUSTAMENT SALARIAL')
+print('=ˆ= ' * 11)
+sou = float(input('Introduir l\'import de l\'salari: '))
+print('-.- ' * 11)
+ajust = float(input('Introduir l\'import de l\'ajust de l\'salari: '))
+print('!<>!' * 11)
+print('el nou import de l\'salari és € {:.2f}'.format(sou + (sou * ajust / 100)))

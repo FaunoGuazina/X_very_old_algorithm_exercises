@@ -1,0 +1,5 @@
+print('=ˆ= ' * 11)
+print('        ciutat de naixement és santa')
+print('=ˆ= ' * 11)
+ciutat = str(input('en quina ciutat vas néixer? ')).strip()
+print(ciutat[:5].upper() == 'SANTO')

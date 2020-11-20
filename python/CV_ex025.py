@@ -1,0 +1,5 @@
+print('=ˆ= ' * 11)
+print('        nom té el cognom silva')
+print('=ˆ= ' * 11)
+nom = str(input('quin és el teu nom complet? ')).strip()
+print('el teu nom té el cognom silva? {}'.format('silva' in nom.lower()))

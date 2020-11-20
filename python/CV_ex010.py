@@ -1,0 +1,8 @@
+print('=ˆ= ' * 11)
+print('           TAULA DE CONVERSIONS')
+print('=ˆ= ' * 11)
+num = float(input('Introduïu un valor en reals brasilers per\nconèixer la seva conversió en euros: '))
+print('-.- ' * 11)
+euro = float(input('Introduïu un import de canvi d\'euro: '))
+print('!<>!' * 11)
+print('Amb R$ {:.2f} es pot convertir a € {:.2f}'.format(num, num * euro))

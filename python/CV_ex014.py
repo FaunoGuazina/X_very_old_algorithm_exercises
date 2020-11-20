@@ -1,0 +1,6 @@
+print('=ˆ= ' * 11)
+print('        CONVERTIDOR DE TEMPERATURA')
+print('=ˆ= ' * 11)
+C = float(input('Introduir la temperatura en centígrades: '))
+print('-.- ' * 11)
+print('La temperatura de {}⁰C correspon a {}⁰F'.format(C, C*9/5+32))
